@@ -1,0 +1,17 @@
+{
+  "name": "tailwind-studies",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "João",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "tw:build": "npx @tailwindcss/cli -i ./src/input.css -o ./dist/output.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.8",
+    "tailwindcss": "^4.0.8"
+  }
+}
