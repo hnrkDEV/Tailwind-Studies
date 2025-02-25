@@ -1,3 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&family=Quicksand:wght@300..700&family=Roboto+Mono:ital,wght@0,700;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"); 
 @import "tailwindcss" source(none);
 
-@source "./"
+
+@source "./";
+
+@theme {
+    --font-quicksand: "Quicksand", serif;
+    --animate-wavey: wavey 1s linear infinite;
+    --animation-delay-100: 100ms;
+    --animation-delay-200: 200ms;
+    --animation-delay-300: 300ms;
+    --animation-delay-400: 400ms;
+    --animation-delay-500: 500ms;
+    --animation-delay-600: 600ms;
+    --animation-delay-700: 700ms;
+    --animation-delay-800: 800ms;
+    --animation-delay-900: 900ms;
+    --animation-delay-1000: 1000ms;
+
+    @keyframes wavey {
+        0%, 100% {
+            transform: scaleY(0.5);
+        }
+        50% {
+            transform: scaleY(1.5);
+        }
+    }
+}
+
+@utility animation-delay-* {
+    animation-delay: --value(--animation-delay-*);
+}
+
+@layer base {
+    body {
+        font-family: var(--font-quicksand);
+    }
+    h1 {
+        @apply text-6xl font-bold;
+    }
+    h2 {
+        @apply text-5xl font-bold;
+    }
+    h3 {
+        @apply text-4xl font-bold;
+    }
+    h4 {
+        @apply text-3xl font-bold;
+    }
+    h5 {
+        @apply text-2xl font-bold;
+    }
+    h6 {
+        @apply text-xl font-bold;
+    }
+}
+
+@layer components {
+    .menu-item {
+        @apply relative flex h-full items-center p-4 cursor-pointer font-bold text-pink-200 hover:text-zinc-200 hover:bg-white/10 transition-colors ease-in-out
+    }
+}
+
+@custom-variant group-open {
+    &:is(:where(.group):is(.open, [open], :popover-open, :open) *) { 
+        @slot;
+    }
+}
+
+@custom-variant peer-open {
+    &:is(:where(.peer):is(.open, [open], :popover-open, :open) ~ *) { 
+        @slot;
+    }
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
